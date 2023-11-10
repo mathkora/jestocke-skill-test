@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-83">
+    <title>Box de stockage</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<form method="get">
+    <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom">
+        <h1> Box de stockage </h1>
+        <main id="boxes">
+            <div class="search-input">
+                <label for="city">Selectionner une ville : </label>
+                <input list="cities_list" id="city" name="city" value="{{ request.GET.city }}"/>
+                <datalist id="cities_list">
+                    {% for city in cities %}
+                    <option>{{city.city}}</option>
+                    {% endfor %}
+                </datalist>
+            </div>
+            <div class="search-input">
+                <label for="start">Disponibilité : </label>
+                <input type="date" id="start" name="start_date" value="{{ request.GET.start_date }}" min={{ now }} max="2025-12-31"/>
+                <input type="date" id="end" name="end_date" value="{{ request.GET.end_date }}" min={{ tomorrow }} max="2025-12-31"/>
+            </div>
+            <div class="search-input">
+                <input type="submit" value="Rechercher">
+            </div>
+        </main>
+    </nav>
+    <section id="sidebar">
+        <div class="sidebar-filter">
+            <label for="storage_type">Type de stockage :</label>
+            <select id="storage_type" name="storage_type">
+                <option value="" {% if request.GET.storage_type == "" %}selected{% endif %}>Tous</option>
+                {% for choice in choices %}
+                    <option value="{{ choice.0 }}"  {% if choice.0 == request.GET.storage_type %}selected{% endif %}>{{ choice.1 }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="sidebar-filter">
+            <label for="size-slider">Filtrer par taille :</label>
+            <div id="size-slider"></div>
+            <input type="text" id="min_size" name="min_size" readonly>
+            <input type="text" id="max_size" name="max_size" readonly>
+        </div>
+        <div class="sidebar-filter">
+            <label for="price-slider">Filtrer par prix :</label>
+            <div id="price-slider"></div>
+            <input type="text" id="min_price" name="min_price" readonly>
+            <input type="text" id="max_price" name="max_price" readonly>
+        </div>
+        <div class="search-input">
+                <input type="submit" value="Filtrer">
+        </div>
+    </section>
+</form>
+<section id="products">
+    <div class="sorted">
+        <div class="sorting">
+            <a href="?sort=surface_asc&{{ search_params }}">Surface ↑</a>
+        </div>
+        <div class="sorting">
+        <a href="?sort=surface_dsc&{{ search_params }}">Surface ↓</a>
+        </div>
+        <div class="sorting">
+        <a href="?sort=price_asc&{{ search_params }}">Prix ↑</a>
+        </div>
+        <div class="sorting">
+        <a href="?sort=price_dsc&{{ search_params }}">Prix ↓</a>
+        </div>
+    </div>
+    <h1>{{ nb_results }} boxes disponibles</h1>
+    <div class="container">
+        <ul>
+            {% for box in boxes %}
+                <div class="product-item">
+                    {% if box.image_1 %}
+                        <img src="{{ box.image_1.url }}" alt="{{ box.title }}" style="max-width: 250px; margin: 20px">
+                    {% else %}
+                        <img src="{% static 'images/not_found.jpg' %}" alt="No image" style="max-width: 250px; margin: 20px">
+                    {% endif %}
+                    <div class="product-details">
+                        <h2>{{ box.title }}</h2>
+                        {% if box.storage_type %}
+                            <p>Type de stockage : {{ box.storage_type }}</p>
+                        {% else %}
+                            <p>Type de stockage : N/A</p>
+                        {% endif %}
+                        <p>Surface : {{ box.surface }} m²</p>
+                        <p>Prix par mois : {{ box.monthly_price }}</p>
+                        <p>Ville : {{ box.city }}</p>
+                    </div>
+                </div>
+            {% empty %}
+                <p>Aucune marchandise trouvée.</p>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+<script>
+   $(function () {
+        // Slider pour la taille
+        $("#size-slider").slider({
+            range: true,
+            min: {{ min_size }},
+            max: {{ max_size }},  // Remplacez par les valeurs minimales et maximales de vos tailles
+            values: [{{ min_size_set }}, {{ max_size_set }}],  // Valeurs par défaut
+            slide: function (event, ui) {
+                $("#min_size").val(ui.values[0]);
+                $("#max_size").val(ui.values[1]);
+            }
+        });
+        $("#min_size").val($("#size-slider").slider("values", 0));
+        $("#max_size").val($("#size-slider").slider("values", 1));
+
+        // Slider pour le prix
+        $("#price-slider").slider({
+            range: true,
+            min: {{ min_price }},
+            max: {{ max_price }},  // Remplacez par les valeurs minimales et maximales de vos prix
+            values: [{{ min_price_set }}, {{ max_price_set }}],  // Valeurs par défaut
+            slide: function (event, ui) {
+                $("#min_price").val(ui.values[0]);
+                $("#max_price").val(ui.values[1]);
+            }
+        });
+        $("#min_price").val($("#price-slider").slider("values", 0));
+        $("#max_price").val($("#price-slider").slider("values", 1));
+    });
+</script>
+</body>
+</html>

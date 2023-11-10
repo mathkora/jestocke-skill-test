@@ -1,3 +1,6 @@
+from django.conf.urls.static import static
+
+from jestocke_skill_test import settings
 """
 URL configuration for jestocke_skill_test project.
 
@@ -16,7 +19,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from market_place.views import storage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('market-place/', storage),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
