@@ -18,6 +18,9 @@ class Profile(models.Model):
 class StorageBox(models.Model):
     id = models.AutoField(primary_key=True)
     owner = models.ForeignKey(Profile, verbose_name="owner", on_delete=models.CASCADE)
+    created_on = models.DateTimeField(
+        default=timezone.now, verbose_name=_("Creation date")
+    )
 
     storage_type = models.CharField(_("Type d'espace"), max_length=32, choices=StorageTypes.choices)
 
