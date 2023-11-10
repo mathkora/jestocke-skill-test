@@ -261,7 +261,9 @@
             "street_number": "2",
             "route": "rue de Raymond",
             "postal_code": "70874",
-            "city": "PeltierVille"
+            "city": "PeltierVille",
+            "monthly_price_currency": "EUR",
+            "monthly_price": 10.00
         }
     },
     {
@@ -276,7 +278,9 @@
             "street_number": "6",
             "route": "rue Daniel Bernard",
             "postal_code": "48999",
-            "city": "Arnaud"
+            "city": "Arnaud",
+            "monthly_price_currency": "EUR",
+            "monthly_price": 10.00
         }
     },
     {
@@ -291,7 +295,9 @@
             "street_number": "1",
             "route": "boulevard de Traore",
             "postal_code": "32126",
-            "city": "Godard"
+            "city": "Godard",
+            "monthly_price": 10.00,
+            "monthly_price_currency": "EUR"
         }
     },
     {
@@ -306,7 +312,9 @@
             "street_number": "4",
             "route": "boulevard Édouard Raymond",
             "postal_code": "06693",
-            "city": "Gaillard-sur-Mer"
+            "city": "Gaillard-sur-Mer",
+            "monthly_price_currency": "EUR",
+            "monthly_price": 10.00
         }
     },
     {
@@ -321,7 +329,9 @@
             "street_number": "2",
             "route": "rue de Dupré",
             "postal_code": "55633",
-            "city": "Martel"
+            "city": "Martel",
+            "monthly_price_currency": "EUR",
+            "monthly_price": 10.00
         }
     },
     {
@@ -336,7 +346,9 @@
             "street_number": "7",
             "route": "avenue de Durand",
             "postal_code": "06620",
-            "city": "Sainte Franck"
+            "city": "Sainte Franck",
+            "monthly_price_currency": "EUR",
+            "monthly_price": 10.00
         }
     },
     {
@@ -351,7 +363,9 @@
             "street_number": "8",
             "route": "rue de Mace",
             "postal_code": "49461",
-            "city": "Lefort-sur-Blanchard"
+            "city": "Lefort-sur-Blanchard",
+            "monthly_price_currency": "EUR",
+            "monthly_price": 10.00
         }
     },
     {
@@ -366,7 +380,9 @@
             "street_number": "7",
             "route": "avenue de Loiseau",
             "postal_code": "78361",
-            "city": "LegrandVille"
+            "city": "LegrandVille",
+            "monthly_price_currency": "EUR",
+            "monthly_price": 10.00
         }
     },
     {
@@ -381,7 +397,9 @@
             "street_number": "7",
             "route": "avenue Henri Brunel",
             "postal_code": "34260",
-            "city": "Boutin-les-Bains"
+            "city": "Boutin-les-Bains",
+            "monthly_price_currency": "EUR",
+            "monthly_price": 10.00
         }
     },
     {
@@ -396,7 +414,9 @@
             "street_number": "2",
             "route": "boulevard de Berthelot",
             "postal_code": "60228",
-            "city": "Malletnec"
+            "city": "Malletnec",
+            "monthly_price_currency": "EUR",
+            "monthly_price": 10.00
         }
     },
     {
@@ -411,7 +431,9 @@
             "street_number": "4",
             "route": "boulevard Georges Lacombe",
             "postal_code": "76419",
-            "city": "Lévêque-sur-Colas"
+            "city": "Lévêque-sur-Colas",
+            "monthly_price_currency": "EUR",
+            "monthly_price": 10.00
         }
     },
     {
@@ -426,7 +448,9 @@
             "street_number": "9",
             "route": "rue Leblanc",
             "postal_code": "76893",
-            "city": "Diallo"
+            "city": "Diallo",
+            "monthly_price_currency": "EUR",
+            "monthly_price": 10.00
         }
     },
     {
@@ -441,7 +465,9 @@
             "street_number": "9",
             "route": "rue Audrey Moreau",
             "postal_code": "86161",
-            "city": "Julien"
+            "city": "Julien",
+            "monthly_price_currency": "EUR",
+            "monthly_price": 10.00
         }
     },
     {
@@ -456,7 +482,9 @@
             "street_number": "9",
             "route": "boulevard Rivière",
             "postal_code": "87155",
-            "city": "Sainte Nicole"
+            "city": "Sainte Nicole",
+            "monthly_price_currency": "EUR",
+            "monthly_price": 10.00
         }
     },
     {
@@ -471,7 +499,9 @@
             "street_number": "9",
             "route": "rue de Bonnet",
             "postal_code": "40682",
-            "city": "Saint Clémence"
+            "city": "Saint Clémence",
+            "monthly_price_currency": "EUR",
+            "monthly_price": 10.00
         }
     }
 ]
